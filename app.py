@@ -37,9 +37,9 @@ def login_form():
     html = "<form action = '/login' method = 'POST' >"
     html = html + "<input name='name' id='name' />"
     html = html + "<input password ='name' id='password' />"
-    html = html + "<input type='submit'>Login</button>"
+    html = html + "<button type='submit'>Login</button>"
     html = html + "</form>"
-    return html
+    return render_template("head.html") + html + render_template("footer.html")
 
 @app.route("/select/<condition>")
 def select_with_condition(condition):
@@ -64,7 +64,7 @@ def add_user(user):
 def anotherURL(url):
     #give a 'friendly' page missing error
     html = "<br><p>HTTP error 404: URL /" + url + " does not exist</p>"
-    return render_template("head.html") + html + render_template("footer.html")
+    return render_template("head.html") + render_template("header.html") + html + render_template("footer.html")
 
 def select(sql):
     #execute a given SQL query and return the results
