@@ -37,7 +37,7 @@ def login_form():
     html = "<form action = '/login' method = 'POST' >"
     html = html + "<input name='name' id='name' />"
     html = html + "<input password ='name' id='password' />"
-    html = html + "<button type='submit'>Login</button>"
+    html = html + "<input type='submit'>Login</button>"
     html = html + "</form>"
     return render_template("head.html") + html + render_template("footer.html")
 
@@ -59,15 +59,44 @@ def add_user(user):
     connection = connect()
     connection.execute("insert into users (name, password, description) values ")
 
+@app.route("/signup", methods=['POST', 'GET'])
+def signup():
+    if request.method == 'GET':
+        return signup_form()
+    else:
+        name = request.form['name']
+        password = request.form['password']
+        description = request.form['description']
+        if name and password and description:
+            connection = connect()
+            connection.execute("INSERT INTO users (name, password, description) values ('"+name+"', '"+password+"', '"+description+"');")
+            connection.close()
+        else:
+            return "Unable to signup, complete all fields" + signup_form
+    
+    if request.method == 'POST':
+        print("Welcome")
+
+
+def signup_form():
+    html = "<form action = '/login' method = 'POST' >"
+    html = html + "<input name='name' id='name' />"
+    html = html + "<input password ='name' id='password' />"
+    html = html + "<input description ='name' id='description' />"
+    html = html + "<input type='submit'>Submit</button>"
+    html = html + "</form>"
+    return html
+
+
 
 @app.route("/<url>")
 def anotherURL(url):
-    #give a 'friendly' page missing error
+    #Give a 'friendly' page missing error.
     html = "<br><p>HTTP error 404: URL /" + url + " does not exist</p>"
     return render_template("head.html") + render_template("header.html") + html + render_template("footer.html")
 
 def select(sql):
-    #execute a given SQL query and return the results
+    #Execute a given SQL query and return the results.
     print(sql)
     connection = connect()
     cursor = connection.cursor()
