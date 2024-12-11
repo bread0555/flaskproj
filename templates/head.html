@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <title>Blog Post Website</title>
+    <link rel="icon" href="/static/logo32.png" />
+    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="manifest" href="/static/manifest.json" />
+    <script src="/static/script.js"></script>
+    <script>navigator.serviceWorker.register('/static/serviceWorker.js');</script>
+</head>
+<body class="light-theme" id="body">
+    <section class="container">
+        <div>
+            <a href="/"><h1>Blog Post Website</h1></a>
+                <nav class="navbar">
+                    <ul class="nav-links">
+                        <input type="checkbox" id="checkbox_toggle" />
+                        <label for="checkbox_toggle" class="hamburger">☰</label>
+                        <div class="menu">
+                            <li><a href="/authors">authors</a></li>
+                            <li><a href="/posts">posts</a></li>
+                            <li><a href="/tags">tags</a></li>
+                            <li><a href="/newPost">+</a></li>
+                        </div>
+                    </ul>
+                </nav>

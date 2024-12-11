@@ -41,8 +41,6 @@ def login_form():
     html = html + "</form>"
     return html
 
-
-
 @app.route("/select/<condition>")
 def select_with_condition(condition):
     connection = connect()
@@ -61,6 +59,27 @@ def add_user(user):
     connection = connect()
     connection.execute("insert into users (name, password, description) values ")
 
+
+@app.route("/<url>")
+def anotherURL(url):
+    #give a 'friendly' page missing error
+    html = "<br><p>HTTP error 404: URL /" + url + " does not exist</p>"
+    return render_template("head.html") + html + render_template("footer.html")
+
+def select(sql):
+    #execute a given SQL query and return the results
+    print(sql)
+    connection = connect()
+    cursor = connection.cursor()
+    result = cursor.execute(sql).fetchall()
+    connection.close()
+    return result
+
+def insert(sql):
+    print(sql)
+    connection = connect()
+    connection.execute(sql)
+    connection.commit()
 
 def connect():
     import sqlite3
