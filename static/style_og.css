@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #fcfcfc;
+    font-family: "IBM Plex Sans", sans-serif;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    margin: 64px auto;
+    max-width: 950px;
+}
+
+a {
+    text-decoration: none;
+    color: #07080a;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+.menu {
+    display: flex;
+    font-size: 16px;
+    gap: 1.5em;
+}
+  
+.menu li {
+    padding: 5px 14px;
+}
+
+.navbar {
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #d2d4d6;
+}
+
+.navbar li {
+    list-style-type: none;
+    display: inline;
+    background-color: #d2d4d6;
+    border-radius: 5px;
+}
+
+.navbar a:hover {
+    color: #005cb8;
+}
+
+input {
+    width: 20%;
+    height: 20px;
+    border: 2px solid #afb1b3;
+    border-radius: 5px;
+}
+
+button {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #afb1b3;
+    border-radius: 5px;
+}
+
+input:focus {
+    outline: none;
+    border: 3px solid #74767a;
+}
+
+form {
+    padding: 15px;
+}

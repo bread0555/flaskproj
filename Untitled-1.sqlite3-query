@@ -2,7 +2,16 @@
 
 -- Use the button in the top right corner to run the entire file.
 
-create table users (id integer PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, password TEXT, description TEXT);
+create table posts (id integer PRIMARY KEY AUTOINCREMENT, authorid INTEGER REFERENCES users(id), title TEXT NOT NULL, description TEXT NOT NULL);
+
+insert into posts (authorid, title, description) values (NULL, 'title 0', 'description 0');
+
+insert into posts (authorid, title, description) values (1, 'title 1', 'description 1');
+insert into posts (authorid, title, description) values (2, 'title 2', 'description 2');
+insert into posts (authorid, title, description) values (3, 'title 3', 'description 3');
+
+
+
 insert into users (name, password, description) values ('bugalugs', 'password', 'best friend');
 insert into users (name, password, description) values ('banjo', 'lala', 'my musical friend');
 insert into users (name, password, description) values ('brandon', 'c432hio4321', 'dunno');

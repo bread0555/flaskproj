@@ -1,9 +1,26 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return "Willkommen"
+@app.route("/", methods=("GET","POST"))
+def login():
+    if request.method == "POST":
+        name = request.form.get('name', '').strip()
+        password = request.form.get('password', '').strip()
+        if not name or not password:
+            return "Name and password cannot be empty"
+        sql = "SELECT id FROM users WHERE name='"+request.form.get('name')+"' AND password='"+request.form.get('password')+"';"
+        result = select(sql)
+        if len(result) > 0:
+            return redirect("/userid=" + str(result[0][0]), code = 307)
+        else:
+            return "Invalid credentials", 401
+    else:
+        return login_form()
+
+
+def login_form():
+    return render_template("head.html") + render_template("header.html") + render_template("login.html") + render_template("footer.html")
+
 
 @app.route("/select")
 def select():
@@ -15,31 +32,6 @@ def select():
         output = output + render_template('user', user = user)
     return output
 
-@app.route('/login', methods=['POST', 'GET'])
-def login():
-    if request.method == 'GET':
-        return login_form()
-    else:
-        # user has POSTed their name and password
-        name = request.form['name']
-        password = request.form['password']
-        connection = connect()
-        records = connection.execute("SELECT count(*) from users WHERE name = '"+name+"' and password ='"+password+"';")
-        connection.close()
-        if str(records[0][0]) == 1:
-            # successful login
-            return "Successful login"
-        else:
-            # failed login
-            return "Incorrect login details - try again" + login_form()
-
-def login_form():
-    html = "<form action = '/login' method = 'POST' >"
-    html = html + "<input name='name' id='name' />"
-    html = html + "<input password ='name' id='password' />"
-    html = html + "<input type='submit'>Login</button>"
-    html = html + "</form>"
-    return render_template("head.html") + html + render_template("footer.html")
 
 @app.route("/select/<condition>")
 def select_with_condition(condition):
@@ -85,7 +77,7 @@ def signup_form():
     html = html + "<input description ='name' id='description' />"
     html = html + "<input type='submit'>Submit</button>"
     html = html + "</form>"
-    return html
+    return render_template("head.html") + html + render_template("footer.html")
 
 
 
@@ -96,7 +88,7 @@ def anotherURL(url):
     return render_template("head.html") + render_template("header.html") + html + render_template("footer.html")
 
 def select(sql):
-    #Execute a given SQL query and return the results.
+    #execute a given SQL query anbd return the results
     print(sql)
     connection = connect()
     cursor = connection.cursor()
@@ -111,10 +103,9 @@ def insert(sql):
     connection.commit()
 
 def connect():
+    #connect to the database
     import sqlite3
     connection = sqlite3.connect('database.sqlite')
-    return connection.cursor()
-
-
+    return connection
 
 app.run(port = 5555)
