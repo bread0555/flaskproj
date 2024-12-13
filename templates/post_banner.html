@@ -1,0 +1,5 @@
+<div>
+    <a href="/posts/userid={{userid}}/postid={{postid}}" style="font-weight: bold; font-size: 25px;">{{title}}</a>
+    {% if author %}<a href="/posts/userid={{userid}}/authorid={{authorid}}" style="font-size: 20px;">by {{author}}</a>{% endif %}
+    - {{content[:50]}}...
+</div>

@@ -22,11 +22,14 @@ body {
 
 a {
     text-decoration: none;
-    color: #07080a;
 }
 
 h1 {
     font-size: 50px;
+}
+
+h3 {
+    font-size: 30px;
 }
 
 .menu {
@@ -74,8 +77,4 @@ button {
 input:focus {
     outline: none;
     border: 3px solid #74767a;
-}
-
-form {
-    padding: 15px;
 }

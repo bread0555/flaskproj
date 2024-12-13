@@ -3,7 +3,7 @@
 <head>
     <title>PWA</title>
     <link rel="icon" href="/static/logo32.png" />
-    <link rel="stylesheet" href="/static/style_og.css" />
+    <link rel="stylesheet" href="/static/styles.css" />
     <link rel="manifest" href="/static/manifest.json" />
     <script src="/static/script.js"></script>
     <script>navigator.serviceWorker.register('/static/serviceWorker.js');</script>
@@ -11,4 +11,11 @@
 <body class="light-theme" id="body">
     <section class="container">
         <div>
-            <a href="/"><h1>PWA</h1></a>
+            <script>
+                const userid = '{{userid}}'
+                if (userid) {
+                    document.write(`<a href="/posts/userid=${userid}"><h1>PWA</h1></a>`);
+                } else {
+                    document.write(`<h1>PWA</h1>`);
+                }
+            </script>

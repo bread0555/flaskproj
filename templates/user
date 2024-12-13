@@ -1,3 +1,0 @@
-<h1>{{user[1]}}</h1>
-<p>UserID = {{user[0]}}</p>
-<p>{{user[2]}}</p>
