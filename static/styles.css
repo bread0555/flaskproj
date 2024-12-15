@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #AEC6CF;
+    background-color: #cedaf0;
     font-family: "IBM Plex Sans", sans-serif;
     overflow-x: hidden;
 }
@@ -22,6 +22,7 @@ body {
 
 a {
     text-decoration: none;
+    color: #3c5d99;
 }
 
 h1 {
@@ -46,35 +47,31 @@ h3 {
     align-items: center;
     justify-content: space-between;
     padding: 15px;
-    border-bottom: 1px solid #d2d4d6;
+    border-bottom: 1px solid #3f3f3f;
 }
 
 .navbar li {
     list-style-type: none;
     display: inline;
-    background-color: #d2d4d6;
+    background-color: #9a9a9a;
     border-radius: 5px;
-}
-
-.navbar a:hover {
-    color: #005cb8;
 }
 
 input {
     width: 20%;
     height: 20px;
-    border: 2px solid #afb1b3;
+    border: 2px solid #3f3f3f;
     border-radius: 5px;
 }
 
 button {
     width: 24px;
     height: 24px;
-    border: 2px solid #afb1b3;
+    border: 2px solid #3f3f3f;
     border-radius: 5px;
 }
 
 input:focus {
     outline: none;
-    border: 3px solid #74767a;
+    border: 3px solid #3f3f3f;
 }

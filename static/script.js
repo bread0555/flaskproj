@@ -3,24 +3,6 @@ if ('serviceWorker' in navigator) {
     .then(() => console.log('Service Worker Registered'));
 }
 
-let deferredPrompt;
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  const installButton = document.querySelector('#install');
-  installButton.style.display = 'block';
-  installButton.addEventListener('click', () => {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the install prompt');
-      }
-      deferredPrompt = null;
-    });
-  });
-});
-
-
 const inactivityTime = 300000; // 5 * 60 * 1000
 const redirectUrl = "/";
 let inactivityTimer;

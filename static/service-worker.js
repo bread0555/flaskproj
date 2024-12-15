@@ -4,11 +4,7 @@ self.addEventListener('install', (event) => {
         return cache.addAll([
           '/',
           '/styles.css',
-          '/script.js',
-          '/icons/logo256.png',
-          '/icons/logo128.png',
-          '/icons/logo64.png',
-          '/icons/logo32.png',        
+          '/script.js'       
         ]);
       })
     );
