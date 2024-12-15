@@ -1,5 +1,5 @@
 <form action = "/posts/userid={{userid}}/new" method = "POST" style="padding: 15px">
-    <input name = "title" id = "title" placeholder = "  title"/>
-    <input name = "content" id = "content" placeholder = "  content"/>
+    <input name = "title" id = "title" placeholder = "  title" onblur="validateField(this)"/>
+    <input name = "content" id = "content" placeholder = "  content" onblur="validateField(this)"/>
     <button type = "submit">→</button>
 </form>

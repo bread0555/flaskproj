@@ -1,6 +1,6 @@
 <form action = "/{{auth_form}}" method = "POST" style="padding: 15px">
-    <input name = "name" id = "name" placeholder = "  name"/>
-    <input name = "password" id = "password" placeholder = "  password"/>
+    <input name = "name" id = "name" placeholder = "  name" onblur="validateField(this)"/>
+    <input name = "password" id = "password" placeholder = "  password" onblur="validateField(this)"/>
     <button type = "submit">→</button>
 </form>
 
